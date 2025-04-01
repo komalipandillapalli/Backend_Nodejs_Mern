@@ -21,6 +21,7 @@ const productSchema = new mongoose.Schema({
     bestSeller : {
         type : String
     },
+    
     description:{
         type : String
     },
