@@ -30,7 +30,7 @@ const addProduct =async (req, res) => {
         const savedproduct = await product.save();
         firm.products.push(savedproduct);
         await firm.save();
-        res.status(200).json({message:"Product added successfully"})
+        res.status(200).json({savedproduct})
 
     } catch (error) {
         console.error(error);
