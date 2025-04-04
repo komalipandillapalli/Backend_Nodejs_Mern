@@ -37,7 +37,7 @@ const addFirm = async(req, res) =>{
 
         await vendor.save();
 
-        return res.status(200).json({message: 'firm added successfully', firmId, vendorFirmName})
+        return res.status(200).json({message: 'firm added successfully',savedFirm, firmId, vendorFirmName})
     } catch (error) {
         console.error(error);
         return res.status(500).json({message:'internal server error'})

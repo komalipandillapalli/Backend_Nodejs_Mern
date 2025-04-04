@@ -26,8 +26,8 @@ const vendorRegister = async(req, res) => {
         });
 
         await newVendor.save();
-        res.status(201).json({message : "Vendor Registered Successfully"})
-        console.log("registered");
+        res.status(201).json({message : "Vendor Registered Successfully", newVendor})
+        console.log("registered", newVendor);
     }
     catch(error){
         console.error(error)
@@ -49,7 +49,7 @@ const vendorLogin = async(req, res) => {
         const token = jwt.sign( {vendorId:vendor._id}, secretKey, {expiresIn : "1h"});
         const vendorId = vendor._id;
 
-        res.status(200).json({ success : "Login Successful", token, vendorId})
+        res.status(200).json({ success : "Login Successful", token,vendor, vendorId})
     }
     catch(error){
         console.error(error)
@@ -79,8 +79,9 @@ const getvendorById=async(req, res) => {
         }
 
         const vendorFirmId = vendor.firm[0]._id;
+        const vendorFirmName=vendor.firm[0].firmName
 
-        res.status(200).json({vendorFirmId});
+        res.status(200).json({vendorFirmId, vendorFirmName});
         console.log(vendorFirmId);
     } catch (error) {
         console.log(error);
